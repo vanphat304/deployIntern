@@ -1,0 +1,265 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Major {
+  INFORMATION_SYSTEM
+  SOFTWARE_TECHNOLOGY
+  NETWORK_SCURITY
+  DATA_ANALYS
+}
+
+enum ScaleCompany {
+  SMALL
+  SMALLMEDIUM
+  MEDIUM
+  MEDIUMLARGE
+  LARGE
+  LARGESUPER
+}
+
+enum STATUS {
+  NOT_WORKED
+  APPROPVED
+  REJECTED
+  SUMBMITED
+  WORKED
+}
+
+enum RATING {
+  NONE
+  BAD
+  PRRETTYBAD
+  MEDIUM
+  GOOD
+  PERTTYGOOD
+}
+
+enum WOKINGFORM {
+  PART_TIME
+  FULL_TIME
+}
+
+enum Role {
+  USER
+  ADMIN
+  SUPER_ADMIN
+}
+
+model NotificationStudent {
+  id        String   @id @default(uuid())
+  student   Student  @relation(fields: [studentId], references: [id])
+  studentId String
+  content   String
+  note      String?
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@map("notificationStudents")
+}
+
+model Province {
+  id              String            @id @default(uuid())
+  code            String
+  name            String
+  Company         Company[]
+  StudentProposal StudentProposal[]
+}
+
+model District {
+  id              String            @id @default(uuid())
+  code            String
+  name            String
+  Company         Company[]
+  StudentProposal StudentProposal[]
+}
+
+model SpecializeCompany {
+  id              String            @id @default(uuid())
+  name            String
+  Company         Company[]
+  StudentProposal StudentProposal[]
+}
+
+model Student {
+  id                  String                @id @default(uuid())
+  identifierStudent   String?               @unique @db.VarChar(12)
+  firstName           String?               @db.VarChar(50)
+  lastName            String?               @db.VarChar(50)
+  passwordHashed      String
+  role                Role                  @default(USER)
+  dateOfBirth         DateTime?
+  address             String?               @db.Text
+  class               String?               @db.VarChar(20)
+  majors              Major?                @default(INFORMATION_SYSTEM)
+  email               String?               @unique
+  phoneNumber         String?               @db.VarChar(10)
+  anotherContact      String?
+  createdAt           DateTime              @default(now())
+  updateAt            DateTime              @updatedAt
+  comapanyProposal    StudentProposal?
+  studentApplyJob     StudentApplyJob[]
+  studentworkCompany  StudentWorkCompany?
+  NotificationStudent NotificationStudent[]
+  StudentLikeJob      StudentLikeJob[]
+
+  @@index([class])
+  @@map("students")
+}
+
+model StudentProposal {
+  id                   String       @id @default(uuid())
+  nameCompany          String?
+  introduceCompany     String?      @db.Text
+  scale                ScaleCompany @default(LARGE)
+  addressCompany       String?      @db.Text
+  legalRepresentative  String?      @db.Text
+  introducePosition    String?      @db.Text
+  referenceName        String?
+  referenceEmail       String?
+  referencePhoneNumber String?
+  addressIntern        String?      @db.Text
+  linkWebsite          String?      @db.Text
+
+  speacialize      String
+  specilizeCompany SpecializeCompany @relation(fields: [speacialize], references: [id])
+
+  addressProvinceId String
+  Province          Province @relation(fields: [addressProvinceId], references: [id])
+
+  addressDistrictId String
+  District          District @relation(fields: [addressDistrictId], references: [id])
+
+  createdAt    DateTime @default(now())
+  updateAt     DateTime @updatedAt
+  studentId    String   @unique
+  student      Student  @relation(fields: [studentId], references: [id])
+  week1        String?  @db.Text
+  week2        String?  @db.Text
+  week3        String?  @db.Text
+  week4        String?  @db.Text
+  week5        String?  @db.Text
+  week6        String?  @db.Text
+  week7        String?  @db.Text
+  week8        String?  @db.Text
+  status       STATUS   @default(SUMBMITED)
+  reasonReject String?  @db.Text
+
+  @@map("studenprosal")
+}
+
+model Company {
+  id                  String            @id @default(uuid())
+  nameCompany         String
+  logo                String
+  banner              String?
+  scale               ScaleCompany      @default(SMALLMEDIUM)
+  website             String?           @default("https://vi.wikipedia.org/wiki/Son_Goku")
+  specializeCompanyId String
+  SpecializeCompany   SpecializeCompany @relation(fields: [specializeCompanyId], references: [id])
+  address             String?
+  isStudentProp       Boolean?          @default(false)
+  addressProvinceId   String
+  Province            Province          @relation(fields: [addressProvinceId], references: [id])
+
+  addressDistrictId String
+  District          District @relation(fields: [addressDistrictId], references: [id])
+
+  introduce          String               @db.Text
+  rating             Float                @default(1)
+  createdAt          DateTime             @default(now())
+  updateAt           DateTime             @updatedAt
+  jobDecription      JobDecripton[]
+  StudentWorkCompany StudentWorkCompany[]
+
+  @@index([nameCompany])
+  @@map("companys")
+}
+
+model JobDecripton {
+  jobId              String            @id @default(uuid())
+  jobTitle           String
+  decriptionJob      String            @db.Text
+  salary             Float?
+  numberRecur        Float?
+  workingForm        WOKINGFORM?       @default(PART_TIME)
+  companyId          String
+  company            Company           @relation(fields: [companyId], references: [id])
+  createdAt          DateTime          @default(now())
+  updateAt           DateTime          @updatedAt
+  timeStartApply     DateTime?         @default(now())
+  timeEndAppply      DateTime?         @default(now())
+  timeToIntverview   DateTime?         @default(now())
+  addressToInterview String?
+  studentApplyJob    StudentApplyJob[]
+  StudentLikeJob     StudentLikeJob[]
+
+  @@index([jobTitle])
+  @@map("jobdecriptions")
+}
+
+model StudentLikeJob {
+  jobId         String
+  jobDecription JobDecripton @relation(fields: [jobId], references: [jobId])
+
+  studentId String
+  student   Student @relation(fields: [studentId], references: [id])
+
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+
+  @@id([jobId, studentId])
+  @@map("studentlikeJobs")
+}
+
+model StudentApplyJob {
+  id            String       @unique @default(uuid())
+  jobId         String
+  jobDecription JobDecripton @relation(fields: [jobId], references: [jobId])
+  studentId     String
+  student       Student      @relation(fields: [studentId], references: [id])
+  dateAppply    DateTime     @default(now())
+  fileCV        String
+  fileScore     String
+  status        STATUS?      @default(SUMBMITED)
+  reasonReject  String?
+
+  resultApply ResultApplyJob?
+
+  @@id([jobId, studentId])
+  @@map("studentapplyjobs")
+}
+
+model ResultApplyJob {
+  id              String          @id @default(uuid())
+  idJobApply      String          @unique
+  StudentApplyJob StudentApplyJob @relation(fields: [idJobApply], references: [id])
+  status          STATUS?         @default(SUMBMITED)
+  timeStart       DateTime        @default(now())
+  description     String          @db.Text
+
+  @@index([status])
+  @@map("resultapplyjob")
+}
+
+model StudentWorkCompany {
+  studentId String  @id @unique
+  student   Student @relation(fields: [studentId], references: [id])
+  companyId String
+  company   Company @relation(fields: [companyId], references: [id])
+
+  rating     RATING  @default(NONE)
+  decription String  @db.Text
+  flag       String?
+
+  @@index([rating])
+  @@map("studentworkcompanys")
+}

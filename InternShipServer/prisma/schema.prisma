@@ -1,0 +1,197 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Major {
+  INFORMATION_SYSTEM
+  SOFTWARE_TECHNOLOGY
+  NETWORK_SCURITY
+  DATA_ANALYS
+}
+
+enum ScaleCompany {
+  SMALL
+  SMALLMEDIUM
+  MEDIUM
+  MEDIUMLARGE
+  LARGE
+  LARGESUPER
+}
+
+enum STATUS {
+  PENDING
+  APPROPVED
+  REJECTED
+  SUMBMITED
+}
+
+enum RATING {
+  NONE
+  BAD
+  PRRETTYBAD
+  MEDIUM
+  GOOD
+  PERTTYGOOD
+}
+
+enum Role {
+  USER
+  ADMIN
+  SUPER_ADMIN
+}
+
+model NotificationStudent {
+  id        String  @id @default(uuid())
+  student   Student @relation(fields: [studentId], references: [id])
+  studentId String
+  content   String
+  note      String?
+  isRead    Boolean @default(false)
+
+  @@map("notificationStudents")
+}
+
+model Student {
+  id                  String                @id @default(uuid())
+  identifierStudent   String?               @unique @db.VarChar(12)
+  firstName           String?               @db.VarChar(50)
+  lastName            String?               @db.VarChar(50)
+  username            String                @unique
+  passwordHashed      String
+  role                Role                  @default(USER)
+  dateOfBirth         DateTime?
+  address             String?               @db.Text
+  class               String?               @db.VarChar(20)
+  majors              Major?                @default(INFORMATION_SYSTEM)
+  email               String?               @unique
+  phoneNumber         String?               @db.VarChar(10)
+  anotherContact      String?
+  createdAt           DateTime              @default(now())
+  updateAt            DateTime              @updatedAt
+  comapanyProposal    StudentProposal?
+  studentApplyJob     StudentApplyJob[]
+  studentworkCompany  StudentWorkCompany?
+  NotificationStudent NotificationStudent[]
+
+  @@index([class])
+  @@map("students")
+}
+
+model StudentProposal {
+  id                   String       @id @default(uuid())
+  nameCompany          String?
+  introduceCompany     String?      @db.Text
+  scale                ScaleCompany @default(LARGE)
+  addressCompany       String?      @db.Text
+  legalRepresentative  String?      @db.Text
+  introducePosition    String?      @db.Text
+  referenceName        String?
+  referenceEmail       String?
+  referencePhoneNumber String?
+  addressIntern        String?      @db.Text
+  linkWebsite          String?      @db.Text
+  specializeCompany    String?
+  createdAt            DateTime     @default(now())
+  updateAt             DateTime     @updatedAt
+  studentId            String       @unique
+  student              Student      @relation(fields: [studentId], references: [id])
+  week1                String?      @db.Text
+  week2                String?      @db.Text
+  week3                String?      @db.Text
+  week4                String?      @db.Text
+  week5                String?      @db.Text
+  week6                String?      @db.Text
+  week7                String?      @db.Text
+  week8                String?      @db.Text
+  status               STATUS       @default(SUMBMITED)
+  reasonReject         String?      @db.Text
+
+  @@map("studenprosal")
+}
+
+model Company {
+  id                 String               @id @default(uuid())
+  nameCompany        String
+  logo               String
+  scale              ScaleCompany         @default(SMALLMEDIUM)
+  address            String
+  introduce          String               @db.Text
+  createdAt          DateTime             @default(now())
+  updateAt           DateTime             @updatedAt
+  jobDecription      JobDecripton[]
+  StudentWorkCompany StudentWorkCompany[]
+
+  @@index([nameCompany])
+  @@map("companys")
+}
+
+model JobDecripton {
+  jobId              String            @id @default(uuid())
+  jobTitle           String
+  decriptionJob      String            @db.Text
+  salary             Decimal?
+  numberRecur        Int?
+  companyId          String
+  company            Company           @relation(fields: [companyId], references: [id])
+  createdAt          DateTime          @default(now())
+  updateAt           DateTime          @updatedAt
+  timeStartApply     DateTime?         @default(now())
+  timeEndAppply      DateTime?         @default(now())
+  timeToIntverview   DateTime?         @default(now())
+  addressToInterview String?
+  studentApplyJob    StudentApplyJob[]
+
+  @@index([jobTitle])
+  @@map("jobdecriptions")
+}
+
+model StudentApplyJob {
+  id            String       @unique @default(uuid())
+  jobId         String
+  jobDecription JobDecripton @relation(fields: [jobId], references: [jobId])
+  studentId     String
+  student       Student      @relation(fields: [studentId], references: [id])
+  dateAppply    DateTime     @default(now())
+  fileCV        String
+  fileScore     String
+  status        STATUS?      @default(SUMBMITED)
+  reasonReject   String?      
+
+  resultApply ResultApplyJob?
+
+  @@id([jobId, studentId])
+  @@map("studentapplyjobs")
+}
+
+model ResultApplyJob {
+  id              String          @id @default(uuid())
+  idJobApply      String          @unique
+  StudentApplyJob StudentApplyJob @relation(fields: [idJobApply], references: [id])
+  status          STATUS?         @default(SUMBMITED)
+  timeStart       DateTime        @default(now())
+  description     String          @db.Text
+
+  @@index([status])
+  @@map("resultapplyjob")
+}
+
+model StudentWorkCompany {
+  studentId String  @id @unique
+  student   Student @relation(fields: [studentId], references: [identifierStudent])
+  companyId String
+  company   Company @relation(fields: [companyId], references: [id])
+
+  rating     RATING @default(NONE)
+  decription String @db.Text
+
+  @@index([rating])
+  @@map("studentworkcompanys")
+}

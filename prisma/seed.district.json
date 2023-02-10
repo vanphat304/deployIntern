@@ -1,0 +1,226 @@
+[
+  {
+    "code": "VN_VAGI",
+    "name": "Tỉnh An Giang"
+  },
+  {
+    "code": "VN_VBRV",
+    "name": "Tỉnh Bà Rịa - Vũng Tàu"
+  },
+  {
+    "code": "VN_VBCA",
+    "name": "Tỉnh Bắc Kạn"
+  },
+  {
+    "code": "VN_VBLI",
+    "name": "Tỉnh Bạc Liêu"
+  },
+  {
+    "code": "VN_VBNI",
+    "name": "Tỉnh Bắc Ninh"
+  },
+  {
+    "code": "VN_VBTR",
+    "name": "Tỉnh Bến Tre"
+  },
+  {
+    "code": "VN_VBDI",
+    "name": "Tỉnh Bình Định"
+  },
+  {
+    "code": "VN_VBPH",
+    "name": "Tỉnh Bình Phước"
+  },
+  {
+    "code": "VN_VBTH",
+    "name": "Tỉnh Bình Thuận"
+  },
+  {
+    "code": "VN_VCMA",
+    "name": "Tỉnh Cà Mau"
+  },
+  {
+    "code": "VN_VCBA",
+    "name": "Tỉnh Cao Bằng"
+  },
+  {
+    "code": "VN_VDLA",
+    "name": "Tỉnh Đắk Lắk"
+  },
+  {
+    "code": "VN_VDNO",
+    "name": "Tỉnh Đắk Nông"
+  },
+  {
+    "code": "VN_VDNA",
+    "name": "Tỉnh Đồng Nai"
+  },
+  {
+    "code": "VN_VDTH",
+    "name": "Tỉnh Đồng Tháp"
+  },
+  {
+    "code": "VN_VGLA",
+    "name": "Tỉnh Gia Lai"
+  },
+  {
+    "code": "VN_VHGI",
+    "name": "Tỉnh Hà Giang"
+  },
+  {
+    "code": "VN_VHNA",
+    "name": "Tỉnh Hà Nam"
+  },
+  {
+    "code": "VN_VHTI",
+    "name": "Tỉnh Hà Tĩnh"
+  },
+  {
+    "code": "VN_VHDU",
+    "name": "Tỉnh Hải Dương"
+  },
+  {
+    "code": "VN_VHAG",
+    "name": "Tỉnh Hậu Giang"
+  },
+  {
+    "code": "VN_VHBI",
+    "name": "Tỉnh Hòa Bình"
+  },
+  {
+    "code": "VN_VHYE",
+    "name": "Tỉnh Hưng Yên"
+  },
+  {
+    "code": "VN_VKHO",
+    "name": "Tỉnh Khánh Hòa"
+  },
+  {
+    "code": "VN_VKTU",
+    "name": "Tỉnh Kon Tum"
+  },
+  {
+    "code": "VN_VLCH",
+    "name": "Tỉnh Lai Châu"
+  },
+  {
+    "code": "VN_VLDO",
+    "name": "Tỉnh Lâm Đồng"
+  },
+  {
+    "code": "VN_VLSO",
+    "name": "Tỉnh Lạng Sơn"
+  },
+  {
+    "code": "VN_VLCA",
+    "name": "Tỉnh Lào Cai"
+  },
+  {
+    "code": "VN_VLAN",
+    "name": "Tỉnh Long An"
+  },
+  {
+    "code": "VN_VNDI",
+    "name": "Tỉnh Nam Định"
+  },
+  {
+    "code": "VN_VNAN",
+    "name": "Tỉnh Nghệ An"
+  },
+  {
+    "code": "VN_VNBI",
+    "name": "Tỉnh Ninh Bình"
+  },
+  {
+    "code": "VN_VNTH",
+    "name": "Tỉnh Ninh Thuận"
+  },
+  {
+    "code": "VN_VPTH",
+    "name": "Tỉnh Phú Thọ"
+  },
+  {
+    "code": "VN_VPYE",
+    "name": "Tỉnh Phú Yên"
+  },
+  {
+    "code": "VN_VQBI",
+    "name": "Tỉnh Quảng Bình"
+  },
+  {
+    "code": "VN_VQNA",
+    "name": "Tỉnh Quảng Nam"
+  },
+  {
+    "code": "VN_VQNG",
+    "name": "Tỉnh Quảng Ngãi"
+  },
+  {
+    "code": "VN_VQNI",
+    "name": "Tỉnh Quảng Ninh"
+  },
+  {
+    "code": "VN_VQTR",
+    "name": "Tỉnh Quảng Trị"
+  },
+  {
+    "code": "VN_VSTR",
+    "name": "Tỉnh Sóc Trăng"
+  },
+  {
+    "code": "VN_VTNI",
+    "name": "Tỉnh Tây Ninh"
+  },
+  {
+    "code": "VN_VTBI",
+    "name": "Tỉnh Thái Bình"
+  },
+  {
+    "code": "VN_VTNG",
+    "name": "Tỉnh Thái Nguyên"
+  },
+  {
+    "code": "VN_VTHO",
+    "name": "Tỉnh Thanh Hóa"
+  },
+  {
+    "code": "VN_VTTH",
+    "name": "Tỉnh Thừa Thiên Huế"
+  },
+  {
+    "code": "VN_VTGI",
+    "name": "Tỉnh Tiền Giang"
+  },
+  {
+    "code": "VN_VTVI",
+    "name": "Tỉnh Trà Vinh"
+  },
+  {
+    "code": "VN_VTQU",
+    "name": "Tỉnh Tuyên Quang"
+  },
+  {
+    "code": "VN_VVLO",
+    "name": "Tỉnh Vĩnh Long"
+  },
+  {
+    "code": "VN_VVPH",
+    "name": "Tỉnh Vĩnh Phúc"
+  },
+  {
+    "code": "VN_VDAN",
+    "name": "TP Đà Nẵng"
+  },
+  {
+    "code": "VN_VHNO",
+    "name": "TP Hà Nội"
+  },
+  {
+    "code": "VN_VHPH",
+    "name": "TP Hải Phòng"
+  },
+  {
+    "code": "VN_VHCM",
+    "name": "TP Hồ Chí Minh"
+  }
+]

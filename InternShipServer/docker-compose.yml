@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  db_internship:
+    image: postgres:13
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_USER: groupinternship
+      POSTGRES_PASSWORD: 110011
+      POSTGRES_DB: dbInternship
+    networks:
+      - networksinternship
+networks:
+  networksinternship:
+
+

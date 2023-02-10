@@ -1,0 +1,98 @@
+[
+  {
+    "code": "VN_VHCM_HBCH",
+    "name": "Huyện Bình Chánh"
+  },
+  {
+    "code": "VN_VHCM_HCGI",
+    "name": "Huyện Cần Giờ"
+  },
+  {
+    "code": "VN_VHCM_HCCH",
+    "name": "Huyện Củ Chi"
+  },
+  {
+    "code": "VN_VHCM_HHMO",
+    "name": "Huyện Hóc Môn"
+  },
+  {
+    "code": "VN_VHCM_HNBE",
+    "name": "Huyện Nhà Bè"
+  },
+  {
+    "code": "VN_VHCM_Q1",
+    "name": "Quận 1"
+  },
+  {
+    "code": "VN_VHCM_Q10",
+    "name": "Quận 10"
+  },
+  {
+    "code": "VN_VHCM_Q11",
+    "name": "Quận 11"
+  },
+  {
+    "code": "VN_VHCM_Q12",
+    "name": "Quận 12"
+  },
+  {
+    "code": "VN_VHCM_Q2",
+    "name": "Quận 2"
+  },
+  {
+    "code": "VN_VHCM_Q3",
+    "name": "Quận 3"
+  },
+  {
+    "code": "VN_VHCM_Q4",
+    "name": "Quận 4"
+  },
+  {
+    "code": "VN_VHCM_Q5",
+    "name": "Quận 5"
+  },
+  {
+    "code": "VN_VHCM_Q6",
+    "name": "Quận 6"
+  },
+  {
+    "code": "VN_VHCM_Q7",
+    "name": "Quận 7"
+  },
+  {
+    "code": "VN_VHCM_Q8",
+    "name": "Quận 8"
+  },
+  {
+    "code": "VN_VHCM_Q9",
+    "name": "Quận 9"
+  },
+  {
+    "code": "VN_VHCM_HBTA",
+    "name": "Quận Bình Tân"
+  },
+  {
+    "code": "VN_VHCM_QBTH",
+    "name": "Quận Bình Thạnh"
+  },
+  {
+    "code": "VN_VHCM_QGVA",
+    "name": "Quận Gò Vấp"
+  },
+  {
+    "code": "VN_VHCM_QPNH",
+    "name": "Quận Phú Nhuận"
+  },
+  {
+    "code": "VN_VHCM_QTBI",
+    "name": "Quận Tân Bình"
+  },
+  {
+    "code": "VN_VHCM_QTPH",
+    "name": "Quận Tân Phú"
+  },
+  {
+    "code": "VN_VHCM_QTDU",
+    "name": "Quận Thủ Đức"
+  }
+]
