@@ -33,9 +33,9 @@ export class JobDescriptionService {
     return this.prisma.jobDecripton.count();
   }
   async getListJobDecriptonCountNumberApply(jobId) {
-    return this.prisma.studentApplyJob.count({
+    return await this.prisma.studentApplyJob.count({
       where: {
-        jobId,
+        jobId
       },
     });
   }
