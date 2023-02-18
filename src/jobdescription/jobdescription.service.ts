@@ -33,7 +33,7 @@ export class JobDescriptionService {
     return this.prisma.jobDecripton.count();
   }
   async getListJobDecriptonCountNumberApply(jobId) {
-    return this.prisma.jobDecripton.count({
+    return this.prisma.studentApplyJob.count({
       where: {
         jobId,
       },
